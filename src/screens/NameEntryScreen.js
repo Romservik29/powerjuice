@@ -17,7 +17,7 @@ const NameEntryScreen = ({navigation}) => {
             />
             <Button style={styles.btnGame}
                 title="BEGIN THE STORY"
-                onPress={() => navigation.navigate('MyStoryScreen')}
+                onPress={() => navigation.navigate('StoryScreen')}
             />
         </Container>
     );

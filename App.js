@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='StoryScreen'
+      initialRouteName='HomeScreen'
       screenOptions={{
         headerTitleAlign: "center",
         headerStyle: {
