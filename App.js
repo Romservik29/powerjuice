@@ -8,7 +8,11 @@ import Dashboard from "./src/components/dashboard";
 import HomeScreen from "./src/screens/HomeScreen";
 import NameEntryScreen from "./src/screens/NameEntryScreen";
 import MyStoryScreen from "./src/screens/MyStoryScreen";
-import StoryScreen from "./src/screens/StoryScreen";
+import StoryScreen from "./src/screens/story-screens/StoryScreen";
+import StoryScreen2 from "./src/screens/story-screens/StoryScreen2";
+import StoryScreen3 from "./src/screens/story-screens/StoryScreen3";
+import StoryScreen4 from "./src/screens/story-screens/StoryScreen4";
+import LevelScreen from "./src/screens/LevelScreen";
 
 const Stack = createStackNavigator();
 
@@ -56,10 +60,30 @@ function MyStack() {
         component={MyStoryScreen}
         options={({ title: "Hello" }, { headerLeft: null })}
       />
-            <Stack.Screen
+      <Stack.Screen
         name='StoryScreen'
         component={StoryScreen}
         options={({ title: "Hello" }, { headerLeft: null })}
+      />
+      <Stack.Screen
+        name='StoryScreen2'
+        component={StoryScreen2}
+        options={({ title: "Hello" }, { headerLeft: null })}
+      />
+      <Stack.Screen
+        name='StoryScreen3'
+        component={StoryScreen3}
+        options={({ title: "Hello" }, { headerLeft: null })}
+      />
+      <Stack.Screen
+        name='StoryScreen4'
+        component={StoryScreen4}
+        options={({ title: "Hello" }, { headerLeft: null })}
+      />
+      <Stack.Screen
+        name='LevelScreen'
+        component={LevelScreen}
+        options={({ title: "LevelScreen" }, { headerLeft: null })}
       />
     </Stack.Navigator>
   );
