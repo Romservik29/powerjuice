@@ -15,7 +15,6 @@ const NameEntryScreen = ({navigation}) => {
                 onChangeText={onChangeName}
                 value={name}
             />
-            {/* <Text style={styles.textStyle}>Hi {name}!  We want to show you electronic waste is a huge problem and all together we can make a difference.</Text> */}
             <Button style={styles.btnGame}
                 title="BEGIN THE STORY"
                 onPress={() => navigation.navigate('MyStoryScreen')}
