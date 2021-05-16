@@ -9,7 +9,7 @@ export default function LevelScreen({ navigation, route }) {
   return (
     <Container>
       <StoryContainer>
-        <Pressable onPress={() => navigation.navigate("HomeScreen")}>
+        <Pressable onPress={() => navigation.navigate("TestScreen")}>
           <View style={{ display: "flex", alignItems: "center" }}>
             <View
               style={{ display: "flex", alignItems: "center", paddingTop: 50 }}>

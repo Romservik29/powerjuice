@@ -13,13 +13,14 @@ import StoryScreen2 from "./src/screens/story-screens/StoryScreen2";
 import StoryScreen3 from "./src/screens/story-screens/StoryScreen3";
 import StoryScreen4 from "./src/screens/story-screens/StoryScreen4";
 import LevelScreen from "./src/screens/LevelScreen";
+import TestScreen from "./src/screens/TestScreen";
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='HomeScreen'
+      initialRouteName='TestScreen'
       screenOptions={{
         headerTitleAlign: "center",
         headerStyle: {
@@ -84,6 +85,11 @@ function MyStack() {
         name='LevelScreen'
         component={LevelScreen}
         options={({ title: "LevelScreen" }, { headerLeft: null })}
+      />
+      <Stack.Screen
+        name='TestScreen'
+        component={TestScreen}
+        options={({ title: "TestScreen" }, { headerLeft: null })}
       />
     </Stack.Navigator>
   );

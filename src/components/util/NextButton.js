@@ -1,29 +1,28 @@
 import React from 'react';
-import { Text, TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
 
-const colors = {
-    accent: '#911',
-    highlight: '#D22',
-    contrast: '#FFF',
-}
-
 const Label = styled.Text`
-  color: ${props => props.color ?? props.color};
+  color: white;
   font-weight: 700;
   align-self: center;
   padding: 10px;
 `
 
 const ButtonContainer = styled.TouchableHighlight`
-  background-color: ${props => props.color};
+  background-color: orange;
   width: 80%;
   margin-top: 5px;
-  border-radius: 5px;
+  border-top-left-radius: 15px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
   width: ${props => props.width};
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
 `
 
-export const MyButton = (props) => {
+export const NextButton = (props) => {
     return (
         <ButtonContainer
             onPress={props.onPress}
