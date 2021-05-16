@@ -25,7 +25,7 @@ const StoryScreen3 = ({ navigation }) => {
               color='#383B8F'
               width='100px'
               flexDirection='row'
-              onPress={() => navigation.navigate("NameEntry")}
+              onPress={() => navigation.navigate("StoryScreen2")}
             />
             <MyButton
               title='Next'
