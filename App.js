@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -7,14 +7,12 @@ import Signup from "./src/components/signup";
 import Dashboard from "./src/components/dashboard";
 import HomeScreen from "./src/screens/HomeScreen";
 import NameEntryScreen from "./src/screens/NameEntryScreen";
-import MyStoryScreen from "./src/screens/MyStoryScreen";
 import StoryScreen from "./src/screens/story-screens/StoryScreen";
 import StoryScreen2 from "./src/screens/story-screens/StoryScreen2";
 import StoryScreen3 from "./src/screens/story-screens/StoryScreen3";
 import StoryScreen4 from "./src/screens/story-screens/StoryScreen4";
 import LevelScreen from "./src/screens/LevelScreen";
 import TestScreen from "./src/screens/TestScreen";
-import { NameContext } from "./src/hooks/commonContext";
 
 const Stack = createStackNavigator();
 
@@ -58,14 +56,9 @@ function MyStack() {
         options={({ title: "Hello" }, { headerLeft: null })}
       />
       <Stack.Screen
-        name='MyStoryScreen'
-        component={MyStoryScreen}
-        options={({ title: "Hello" }, { headerLeft: null })}
-      />
-      <Stack.Screen
         name='StoryScreen'
         component={StoryScreen}
-        options={({ title: "Hello" }, { headerLeft: null })}
+        options={({ title: "StoryScreen" }, { headerLeft: null })}
       />
       <Stack.Screen
         name='StoryScreen2'
@@ -95,7 +88,7 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
-
+export const NameContext = React.createContext(null)
 export default function App() {
   const [username, setUsername] = useState("");
   return (

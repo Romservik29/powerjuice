@@ -8,7 +8,7 @@ import { Container } from "../../components/util/Container";
 import { NextButton } from "../../components/util/NextButton";
 
 const StoryScreen = ({ navigation }) => {
-  // const {username} = useContext(NameContext)
+  const { username } = useContext(NameContext);
   return (
     <Container color='#313494'>
       <Icon
@@ -18,31 +18,32 @@ const StoryScreen = ({ navigation }) => {
         style={styles.close}
       />
       <StoryContainer>
-        <InnerContainer>
-          <Image source={require("../../img/Rectangle.png")} style={styles.img}></Image>
+          <Image
+            source={require("../../img/Rectangle.png")}
+            style={styles.img}></Image>
           <Text style={styles.text}>
             Mother Earth needs your help
-            <Text style={styles.name}></Text>. Poison is leaking into
-            her watery groundwater veins from electronics and the weight of the
-            landfills are putting pressure on her.
+            <Text style={{...styles.text, color: "#F2A323"}}>{" " + username}</Text>. Poison is leaking
+            into her watery groundwater veins from electronics and the weight of
+            the landfills are putting pressure on her.
           </Text>
-          <NextButton onPress={(navigation.navigate("StoryScreen2"))}/>
-        </InnerContainer>
       </StoryContainer>
+      <NextButton
+        title='NEXT'
+        color='#383B8F'
+        width='150px'
+        flexDirection='row'
+        onPress={() => navigation.navigate("StoryScreen2")}
+      />
     </Container>
   );
 };
 
-const InnerContainer = styled.View`
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const styles = StyleSheet.create({
-  img:{
-    marginBottom: 30,
+  img: {
+    marginBottom: 20,
+    width: 246,
+    height: 246,
   },
   close: {
     fontSize: 30,
@@ -53,11 +54,11 @@ const styles = StyleSheet.create({
   text: {
     color: "#383B8F",
     textAlign: "justify",
-    width: "80%",
+    width: 246,
+    fontSize: 15,
+    lineHeight: 17,
+    fontWeight: "600",
     marginBottom: 10,
-  },
-  name: {
-    color: "#F2A323",
   },
   btn: {
     backgroundColor: "green",

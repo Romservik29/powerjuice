@@ -24,6 +24,7 @@ export const MyButton = (props) => {
             onPress={props.onPress}
             color={props.color ?? 'orange'}
             width={props.width ?? '100%'}
+            disabled ={props.disabled ?? false}
         >
             <Label>
                 {props.children ?? props.title}

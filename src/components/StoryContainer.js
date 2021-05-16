@@ -2,16 +2,21 @@ import React from "react";
 import { Text, View } from "react-native";
 import styled from "styled-components";
 
-export default function StoryContainer({children}) {
+export default function StoryContainer({ children }) {
   return (
-      <Container>
-        <InnerConatiner>
-            {children}
-        </InnerConatiner>
-      </Container>
+    <Container>
+      <OuterConatiner>
+        <InnerContainer>{children}</InnerContainer>
+      </OuterConatiner>
+    </Container>
   );
 }
-
+const InnerContainer = styled.View`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Container = styled.View`
   width: 90%;
   height: 95%;
@@ -19,7 +24,7 @@ const Container = styled.View`
   border-radius: 30px;
 `;
 
-const InnerConatiner = styled.View`
+const OuterConatiner = styled.View`
   border-radius: 30px;
   width: 100%;
   background-color: #ffffff;
