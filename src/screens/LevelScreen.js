@@ -7,24 +7,21 @@ import StoryContainer from "../components/StoryContainer";
 
 export default function LevelScreen({ navigation, route }) {
   return (
-    <Container>
+    <Container color="dark">
       <StoryContainer>
         <Pressable onPress={() => navigation.navigate("TestScreen")}>
           <View style={{ display: "flex", alignItems: "center" }}>
-            <View
-              style={{ display: "flex", alignItems: "center", paddingTop: 50 }}>
-              <Image
-                source={require("../img/Ellipse.png")}
-                style={{ width: 250, height: 250 }}
-              />
               <Level>LEVEL {route.params.level}</Level>
-            </View>
-            <LinearProgress
-              color='red'
-              variant='determinate'
-              value={route.params.progress}
-              style={{ height: 10, width: "80%" }}
-            />
+              <LinearProgress
+                color='red'
+                variant='determinate'
+                value={route.params.progress}
+                style={{ height: 10, width: "80%" }}
+              />
+              <Image
+                source={require("../img/earth.png")}
+                style={{ width: 250, height: 250, margin: 20}}
+              />
           </View>
         </Pressable>
       </StoryContainer>

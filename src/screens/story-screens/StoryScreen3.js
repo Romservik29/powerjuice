@@ -7,8 +7,8 @@ import { StoryText } from "../../components/util/StoryText";
 
 const StoryScreen3 = ({ navigation }) => {
   return (
-    <Container>
-      <StoryContainer color="dark">
+    <Container color="dark">
+      <StoryContainer>
         <Image source={require("../../img/mother-nature.png")} />
           <StoryText style={{ margin: 20 }}>
             We need to update the electronic brains so they have the knowledge
