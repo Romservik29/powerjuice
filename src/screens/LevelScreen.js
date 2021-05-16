@@ -8,7 +8,6 @@ import StoryContainer from "../components/StoryContainer";
 export default function LevelScreen({ navigation, route }) {
   return (
     <Container color="dark">
-      <StoryContainer>
         <Pressable onPress={() => navigation.navigate("TestScreen")}>
           <View style={{ display: "flex", alignItems: "center" }}>
               <Level>LEVEL {route.params.level}</Level>
@@ -24,7 +23,6 @@ export default function LevelScreen({ navigation, route }) {
               />
           </View>
         </Pressable>
-      </StoryContainer>
     </Container>
   );
 }
