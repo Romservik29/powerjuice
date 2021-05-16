@@ -2,14 +2,9 @@ import React from 'react';
 import { Text, TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
 
-const colors = {
-    accent: '#911',
-    highlight: '#D22',
-    contrast: '#FFF',
-}
 
 const Label = styled.Text`
-  color: ${props => props.color ?? props.color};
+  color: ${props => props.color ?? 'white'};
   font-weight: 700;
   align-self: center;
   padding: 10px;

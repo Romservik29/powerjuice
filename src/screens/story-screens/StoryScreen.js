@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, StyleSheet, Image, Button, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import styled from "styled-components/native";
+import { NameContext } from "../../../App";
 import StoryContainer from "../../components/StoryContainer";
 import { Container } from "../../components/util/Container";
-import {MyButton} from "../../components/util/MyButton";
+import { NextButton } from "../../components/util/NextButton";
 
 const StoryScreen = ({ navigation }) => {
+  // const {username} = useContext(NameContext)
   return (
     <Container color='#313494'>
       <Icon
@@ -20,11 +22,11 @@ const StoryScreen = ({ navigation }) => {
           <Image source={require("../../img/Rectangle.png")} style={styles.img}></Image>
           <Text style={styles.text}>
             Mother Earth needs your help
-            <Text style={styles.name}>NAME HERE</Text>. Poison is leaking into
+            <Text style={styles.name}></Text>. Poison is leaking into
             her watery groundwater veins from electronics and the weight of the
             landfills are putting pressure on her.
           </Text>
-          <MyButton title='NEXT' color='#383B8F' width='200px' onPress={(navigation.navigate("StoryScreen2"))}/>
+          <NextButton onPress={(navigation.navigate("StoryScreen2"))}/>
         </InnerContainer>
       </StoryContainer>
     </Container>

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useMemo, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -20,7 +20,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='TestScreen'
+      initialRouteName='HomeScreen'
       screenOptions={{
         headerTitleAlign: "center",
         headerStyle: {
@@ -94,11 +94,14 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
-
+export const NameContext = React.createContext(null)
 export default function App() {
+  const [username, setUsername] = useState("");
   return (
     <NavigationContainer>
-      <MyStack />
+      <NameContext.Provider value={{username,setUsername}}>
+        <MyStack />
+      </NameContext.Provider>
     </NavigationContainer>
   );
 }

@@ -4,6 +4,7 @@ import { View, Image } from "react-native";
 import { Container } from "../components/util/Container";
 import CreatedBy from "../components/util/CreatedBy";
 import { Button } from 'react-native-elements';
+import { MyButton } from '../components/util/MyButton';
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -11,13 +12,13 @@ const HomeScreen = ({ navigation }) => {
       <Container>
         <Image source={require('../img/mother-nature.png')}/>
         <View>
-          <Button
+        <MyButton
             title='Play Game'
             color='#F2A323'
             width='250px'
             onPress={() => navigation.navigate("NameEntryScreen")}
           />
-          <Button
+          <MyButton
             title='Find e-waste Recyling'
             color='#383B8F'
             width='250px'
