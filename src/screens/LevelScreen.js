@@ -28,7 +28,7 @@ export default function LevelScreen({ navigation, route }) {
 }
 
 const Level = styled.Text`
-  color: #f2a323;
+  color: white;
   font-size: 40px;
   font-weight: 900;
   font-weight: bold;
