@@ -2,9 +2,9 @@ import React from "react";
 import { Text, View } from "react-native";
 import styled from "styled-components";
 
-export default function StoryContainer({ children }) {
+export default function StoryContainer({ children, color }) {
   return (
-    <Container>
+    <Container color={color}>
       <OuterConatiner>
         <InnerContainer>{children}</InnerContainer>
       </OuterConatiner>
@@ -19,8 +19,8 @@ const InnerContainer = styled.View`
 `;
 const Container = styled.View`
   width: 90%;
-  height: 95%;
-  background-color: #4d51c2;
+  height: 90%;
+  background-color: ${props => props.color ?? "#4d51c2"};
   border-radius: 30px;
 `;
 

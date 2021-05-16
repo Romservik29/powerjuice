@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import StoryContainer from "../components/StoryContainer";
 import { Container } from "../components/util/Container";
 import Close from "../components/util/Close";
 import { NextButton } from "../components/util/NextButton";
-import { Animated, View } from "react-native";
+import { Animated, Text, View } from "react-native";
 import { AnswerButton } from "../components/util/AnswerButton";
 import { AnswerText } from "../components/util/AnswerText";
 import questions from "../questions.json";
+import { LanguageContext, PointsContext } from "../../App";
+import { LinearProgress } from "react-native-elements/";
 
 export default function TestScreenPing({ navigation, route }) {
+  const { lang } = useContext(LanguageContext);
+  const { points, setPoints } = useContext(PointsContext);
   const { question, level } = route.params;
   const [answered, setAnswered] = useState(false);
   const [array, setArray] = useState(
-    questions.questions.levels[level][question]
+    questions[lang].questions.levels[level][question]
   );
   const handlePress = (answer) => {
-    setAnswered(true);
-    setArray({ ...array, answer });
+    if (answered === false) {
+      setAnswered(true);
+      setArray({ ...array, answer });
+      questions[lang].questions.levels[level][question];
+      if (answer === array.correct)
+        setPoints(
+          points + questions[lang].questions.levels[level][question].points
+        );
+    }
   };
   const springValue = new Animated.Value(0.85);
   useEffect(() => {
@@ -26,9 +37,37 @@ export default function TestScreenPing({ navigation, route }) {
       useNativeDriver: true,
     }).start();
   }, []);
+
   return (
     <Container color='dark'>
       <Close navigation={navigation} />
+      <View
+        style={{
+          height: 60,
+          width: "100%",
+          paddingTop: 10,
+          alignItems: "center",
+        }}>
+        <View
+          style={{
+            width: "80%",
+            height: 30,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}>
+          <Text style={{ color: "orange" }}>
+            Question {(level - 2) * 3 + question + 1}/9
+          </Text>
+          <Text style={{ color: "orange" }}>{points}</Text>
+        </View>
+        <LinearProgress
+          color='red'
+          variant='determinate'
+          value={((level - 2) * 3 + question + 1) / 9}
+          style={{ height: 10, width: "80%" }}
+        />
+      </View>
       <StoryContainer>
         <View
           style={{
@@ -44,22 +83,22 @@ export default function TestScreenPing({ navigation, route }) {
               transform: [{ scale: springValue }],
             }}>
             <AnswerText>
-              On average how much does it cost to recycle your phone?
+              {questions[lang].questions.levels[level][question].question}
             </AnswerText>
           </Animated.View>
           <View>
             {array.answers.map((a) => (
               <AnswerButton
                 key={a}
-                disabled={answered}
                 onPress={() => handlePress(a)}
                 title={a}
+                color={a !== array.answer ? "#383B8FAB" : "light"}
                 bgColor={
                   a !== array.answer
                     ? "white"
                     : array.answer === array.correct
-                    ? "green"
-                    : "red"
+                    ? "#30B073"
+                    : "#D81A48"
                 }
               />
             ))}
@@ -67,25 +106,27 @@ export default function TestScreenPing({ navigation, route }) {
         </View>
       </StoryContainer>
       <NextButton
-        title='NEXT'
+        title='PROCHAIN'
         color='#383B8F'
         width='150px'
         flexDirection='row'
         onPress={() => {
-          console.log({question, level});
-          console.log(
-            questions.questions.levels[level].length
-          );
-          if (question < questions.questions.levels[level].length-1)
-            navigation.push("TestScreenPing", {
-              question: route.params.question + 1,
-              level,
-            });
-          else
-            navigation.push("LevelScreen", {
-              level,
-              progress: 0.66,
-            });
+          if (answered) {
+            if (question < questions[lang].questions.levels[level].length - 1)
+              navigation.push(
+                "TestScreenPing",
+                {
+                  question: route.params.question + 1,
+                  level,
+                },
+                { transition: "vertical" }
+              );
+            else
+              navigation.push("LevelScreen", {
+                level,
+                progress: ((level - 2) * 3 + question + 1) / 9,
+              });
+          }
         }}
       />
     </Container>

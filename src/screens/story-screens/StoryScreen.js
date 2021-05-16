@@ -2,13 +2,15 @@ import React, { useContext } from "react";
 import { Text, StyleSheet, Image, Button, View } from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 import styled from "styled-components/native";
-import { NameContext } from "../../../App";
+import { LanguageContext, NameContext } from "../../../App";
+import language from "../../../language";
 import StoryContainer from "../../components/StoryContainer";
 import { Container } from "../../components/util/Container";
 import { NextButton } from "../../components/util/NextButton";
 
 const StoryScreen = ({ navigation }) => {
   const { username } = useContext(NameContext);
+  const {lang} = useContext(LanguageContext);
   return (
     <Container color='#313494'>
       <Icon
@@ -18,18 +20,21 @@ const StoryScreen = ({ navigation }) => {
         style={styles.close}
       />
       <StoryContainer>
-          <Image
-            source={require("../../img/Rectangle.png")}
-            style={styles.img}></Image>
-          <Text style={styles.text}>
-            Mother Earth needs your help
-            <Text style={{fontSize: 16, color: "#F2A323", fontWeight: 'bold'}}>{" " + username}</Text>. Poison is leaking
-            into her watery groundwater veins from electronics and the weight of
-            the landfills are putting pressure on her.
+        <Image
+          source={require("../../img/Rectangle.png")}
+          style={styles.img}></Image>
+        <Text style={styles.text}>
+          {lang === "fr" ? "Mère nature a besoin de votre aide": "Mother Earth needs your help"}
+          <Text style={{ fontSize: 16, color: "#F2A323", fontWeight: "bold" }}>
+            {" " + username+". "}
           </Text>
+          {lang ==="fr" 
+          ?"Le poison des déchets électroniques s'infiltre dans ses veines d'eau souterraines et les décharges lui mettent la pression." 
+          :"Poison is leaking into her watery groundwater veins from electronics and the weight of the landfills are putting pressure on her." }
+        </Text>
       </StoryContainer>
       <NextButton
-        title='NEXT'
+        title={language.Next[lang]}
         color='#383B8F'
         width='150px'
         flexDirection='row'
@@ -59,6 +64,7 @@ const styles = StyleSheet.create({
     lineHeight: 17,
     fontWeight: "600",
     marginBottom: 10,
+    color: "#383B8F",
   },
   btn: {
     backgroundColor: "green",

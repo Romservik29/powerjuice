@@ -2,12 +2,14 @@ import React, { useContext, useState } from "react";
 import { Text, StyleSheet, Image, View } from "react-native";
 import { Input } from "react-native-elements";
 import { Container } from "../components/util/Container";
-import { NameContext } from "../../App";
+import { LanguageContext, NameContext } from "../../App";
 import { MyButton } from "../components/util/MyButton";
 import StoryContainer from "../components/StoryContainer";
+import language from "../../language";
 
 const NameEntryScreen = ({ navigation }) => {
   const { username, setUsername } = useContext(NameContext);
+  const {lang} = useContext(LanguageContext)
   return (
     <Container color='dark'>
       <Image style={styles.img} source={require("../img/mother-nature.png")} />
@@ -20,15 +22,15 @@ const NameEntryScreen = ({ navigation }) => {
             justifyContent: "center",
           }}>
           <View style={{ alignItems: "flex-start" }}>
-            <Text style={styles.textStyle}>What is your</Text>
+            <Text style={styles.textStyle}>{lang ==="fr" ? "Quel est" : "What is"}</Text>
             <Text style={styles.textStyle}>
-              <Text style={{ ...styles.textStyle, color: "orange" }}>name</Text>
+              <Text style={{ ...styles.textStyle, color: "orange" }}>{lang=== "fr" ? "votre nom" : "your name"}</Text>
               ?
             </Text>
           </View>
           <Input
             maxLength={10}
-            placeholder='NAME HERE'
+            placeholder={language.Name_Here[lang]}
             onChangeText={setUsername}
             value={username}
           />
@@ -36,7 +38,7 @@ const NameEntryScreen = ({ navigation }) => {
             width='200px'
             style={styles.btnGame}
             disabled={!username}
-            title='BEGIN THE STORY'
+            title={language.Begin_the_story[lang]}
             onPress={() => navigation.navigate("StoryScreen")}
           />
         </View>
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontSize: 36,
     fontWeight: "bold",
+    color: "#383B8F",
   },
   textSub: {
     fontSize: 20,

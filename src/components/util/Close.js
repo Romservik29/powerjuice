@@ -16,7 +16,7 @@ export default function Close({ navigation }) {
 const styles = StyleSheet.create({
   close: {
     position: "absolute",
-    top: 5,
+    top: 20,
     right: 5,
     fontSize: 25,
   },

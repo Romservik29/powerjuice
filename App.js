@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  HeaderStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 
 import Login from "./src/components/login";
 import Signup from "./src/components/signup";
@@ -14,94 +17,52 @@ import StoryScreen4 from "./src/screens/story-screens/StoryScreen4";
 import LevelScreen from "./src/screens/LevelScreen";
 import TestScreenPing from "./src/screens/TestScreenPing";
 import InterestingFact from "./src/screens/InterestingFact";
+import FinalScoreScreen from "./src/screens/FinalScoreScreen";
+import SelectLanguageScreen from "./src/screens/SelectLanguageScreen";
 
 const Stack = createStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='HomeScreen'
+      initialRouteName='SelectLanguageScreen'
       screenOptions={{
-        headerTitleAlign: "center",
-        headerStyle: {
-          backgroundColor: "#313494",
-        },
-        headerTintColor: "#fff",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
+        headerShown: false,
       }}>
-      <Stack.Screen
-        name='Signup'
-        component={Signup}
-        options={{ title: "Signup" }}
-      />
-      <Stack.Screen
-        name='Login'
-        component={Login}
-        options={({ title: "Login" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='Dashboard'
-        component={Dashboard}
-        options={({ title: "Dashboard" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='HomeScreen'
-        component={HomeScreen}
-        options={({ title: "Hello" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='NameEntryScreen'
-        component={NameEntryScreen}
-        options={({ title: "Hello" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='StoryScreen'
-        component={StoryScreen}
-        options={({ title: "StoryScreen" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='StoryScreen2'
-        component={StoryScreen2}
-        options={({ title: "Hello" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='StoryScreen3'
-        component={StoryScreen3}
-        options={({ title: "Hello" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='StoryScreen4'
-        component={StoryScreen4}
-        options={({ title: "Hello" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='LevelScreen'
-        component={LevelScreen}
-        options={({ title: "LevelScreen" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='TestScreenPing'
-        component={TestScreenPing}
-        options={({ title: "TestScreenPing" }, { headerLeft: null })}
-      />
-      <Stack.Screen
-        name='InterestingFact'
-        component={InterestingFact}
-        options={({ title: "InterestingFact" }, { headerLeft: null })}
-      />
+      <Stack.Screen name='SelectLanguageScreen' component={SelectLanguageScreen} />
+      {/* <Stack.Screen name='Signup' component={Signup} />
+      <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='Dashboard' component={Dashboard} /> */}
+      <Stack.Screen name='HomeScreen' component={HomeScreen} />
+      <Stack.Screen name='NameEntryScreen' component={NameEntryScreen} />
+      <Stack.Screen name='StoryScreen' component={StoryScreen} />
+      <Stack.Screen name='StoryScreen2' component={StoryScreen2} />
+      <Stack.Screen name='StoryScreen3' component={StoryScreen3} />
+      <Stack.Screen name='StoryScreen4' component={StoryScreen4} />
+      <Stack.Screen name='LevelScreen' component={LevelScreen} />
+      <Stack.Screen name='TestScreenPing' component={TestScreenPing} />
+      <Stack.Screen name='InterestingFact' component={InterestingFact} />
+      <Stack.Screen name='FinalScoreScreen' component={FinalScoreScreen} />
     </Stack.Navigator>
   );
 }
-export const NameContext = React.createContext(null)
+export const NameContext = React.createContext();
+export const PointsContext = React.createContext();
+export const LanguageContext = React.createContext();
+
 export default function App() {
   const [username, setUsername] = useState("");
+  const [points, setPoints] = useState(0);
+  const [lang, setLang] = useState("en");
   return (
     <NavigationContainer>
-      <NameContext.Provider value={{username,setUsername}}>
-        <MyStack />
-      </NameContext.Provider>
+      <LanguageContext.Provider value={{ lang, setLang }}>
+        <NameContext.Provider value={{ username, setUsername }}>
+          <PointsContext.Provider value={{ points, setPoints }}>
+            <MyStack />
+          </PointsContext.Provider>
+        </NameContext.Provider>
+      </LanguageContext.Provider>
     </NavigationContainer>
   );
 }

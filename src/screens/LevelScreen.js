@@ -1,26 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Image, View, Pressable, Alert } from "react-native";
 import styled from "styled-components";
 import { Container } from "../components/util/Container";
 import { LinearProgress } from "react-native-elements";
-import questions from '../questions.json'
+import questions from "../questions.json";
+import language from "../../language";
+import { LanguageContext } from "../../App";
 
 export default function LevelScreen({ navigation, route }) {
+  const {lang} = useContext(LanguageContext);
   return (
     <Container color='dark'>
       <Pressable
         onPress={() => {
-          if (questions.questions.levels[route.params.level + 1])
-            navigation.navigate("TestScreenPing", {
+          if (questions[lang].questions.levels[route.params.level + 1])
+            navigation.push("TestScreenPing", {
               question: 0,
               level: route.params.level + 1,
-            })
-            else{
-              Alert.alert("Level not")
-            }
+            });
+          else {
+            navigation.navigate("FinalScoreScreen");
+          }
         }}>
         <View style={{ display: "flex", alignItems: "center" }}>
-          <Level>LEVEL {route.params.level}</Level>
+          <Level>{language.Level[lang]} {route.params.level}</Level>
           <LinearProgress
             color='red'
             variant='determinate'
