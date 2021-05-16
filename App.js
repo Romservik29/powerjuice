@@ -14,6 +14,7 @@ import StoryScreen3 from "./src/screens/story-screens/StoryScreen3";
 import StoryScreen4 from "./src/screens/story-screens/StoryScreen4";
 import LevelScreen from "./src/screens/LevelScreen";
 import TestScreen from "./src/screens/TestScreen";
+import { NameContext } from "./src/hooks/commonContext";
 
 const Stack = createStackNavigator();
 
@@ -94,7 +95,7 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
-export const NameContext = React.createContext(null)
+
 export default function App() {
   const [username, setUsername] = useState("");
   return (

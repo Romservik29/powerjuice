@@ -3,8 +3,8 @@ import { Text, StyleSheet, Image } from "react-native";
 import { Button } from "react-native-elements/dist/buttons/Button";
 import { TextInput } from "react-native-gesture-handler";
 import { Container } from "../components/util/Container";
-import { NameContext } from "../../App";
 import { MyButton } from "../components/util/MyButton";
+import { NameContext } from "../hooks/commonContext";
 
 const NameEntryScreen = ({ navigation }) => {
   const { username, setUsername } = useContext(NameContext);

@@ -3,7 +3,7 @@ import StoryContainer from "../components/StoryContainer";
 import { Container } from "../components/util/Container";
 import Close from "../components/util/Close";
 import { NextButton } from "../components/util/NextButton";
-import { Alert, Animated, View } from "react-native";
+import { Animated, View } from "react-native";
 import { AnswerButton } from "../components/util/AnswerButton";
 import { AnswerText } from "../components/util/AnswerText";
 
