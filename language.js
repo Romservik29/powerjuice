@@ -32,7 +32,7 @@ const language = {
         fr: "Arrière"
     },
     Play_a_game_story:{
-        en: "PLAY a  GAME STORY",
+        en: "PLAY A  GAME STORY",
         fr: "Jouer Le Jeu"
     },
     Level: {

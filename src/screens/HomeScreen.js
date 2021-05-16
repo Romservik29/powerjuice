@@ -1,6 +1,6 @@
 import "react-native-gesture-handler";
 import React, { useContext } from "react";
-import { View, Image } from "react-native";
+import { View, Image, Alert } from "react-native";
 import { Container } from "../components/util/Container";
 import CreatedBy from "../components/util/CreatedBy";
 import { MyButton } from "../components/util/MyButton";
@@ -26,10 +26,10 @@ const HomeScreen = ({ navigation }) => {
             onPress={handleClick}
           />
           <MyButton
-            title='Trouver le recyclage des déchets électroniques'
+            title='find e-waste recycling'
             color='#383B8F'
             width='250px'
-            onPress={() => navigation.navigate("Info")}
+            onPress={() => Alert.alert("It's not ready!")}
           />
         </View>
         <CreatedBy />

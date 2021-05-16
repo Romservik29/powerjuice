@@ -9,6 +9,7 @@ import { Container } from "../components/util/Container";
 export default function SelectLanguageScreen({ navigation }) {
   const { setLang } = useContext(LanguageContext);
   const handleClick = (flag) => {
+    setLang(flag)
     navigation.navigate("HomeScreen");
   };
   return (
