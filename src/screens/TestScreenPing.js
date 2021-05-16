@@ -6,18 +6,17 @@ import { NextButton } from "../components/util/NextButton";
 import { Animated, View } from "react-native";
 import { AnswerButton } from "../components/util/AnswerButton";
 import { AnswerText } from "../components/util/AnswerText";
+import questions from "../questions.json";
 
-export default function TestScreen({ navigation }) {
+export default function TestScreenPing({ navigation, route }) {
+  const { question, level } = route.params;
   const [answered, setAnswered] = useState(false);
-  const arr = {
-    answers: ["TOXINS", "WATER", "OIL", "NOTHING"],
-    correct: "TOXINS",
-  };
-  const [array, setArray] = useState(arr);
+  const [array, setArray] = useState(
+    questions.questions.levels[level][question]
+  );
   const handlePress = (answer) => {
     setAnswered(true);
-    array.answer = answer;
-    setArray(array);
+    setArray({ ...array, answer });
   };
   const springValue = new Animated.Value(0.85);
   useEffect(() => {
@@ -27,7 +26,6 @@ export default function TestScreen({ navigation }) {
       useNativeDriver: true,
     }).start();
   }, []);
-  console.log(array);
   return (
     <Container color='dark'>
       <Close navigation={navigation} />
@@ -65,7 +63,6 @@ export default function TestScreen({ navigation }) {
                 }
               />
             ))}
-            {console.log(array.answer === array.correct)}
           </View>
         </View>
       </StoryContainer>
@@ -74,7 +71,22 @@ export default function TestScreen({ navigation }) {
         color='#383B8F'
         width='150px'
         flexDirection='row'
-        onPress={() => navigation.navigate("InterestingFact")}
+        onPress={() => {
+          console.log({question, level});
+          console.log(
+            questions.questions.levels[level].length
+          );
+          if (question < questions.questions.levels[level].length-1)
+            navigation.push("TestScreenPing", {
+              question: route.params.question + 1,
+              level,
+            });
+          else
+            navigation.push("LevelScreen", {
+              level,
+              progress: 0.66,
+            });
+        }}
       />
     </Container>
   );

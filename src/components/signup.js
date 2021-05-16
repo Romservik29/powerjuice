@@ -36,7 +36,6 @@ export default class Signup extends Component {
         res.user.updateProfile({
           displayName: this.state.displayName
         })
-        console.log('User registered successfully!')
         this.setState({
           isLoading: false,
           displayName: '',

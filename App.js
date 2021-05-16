@@ -12,7 +12,7 @@ import StoryScreen2 from "./src/screens/story-screens/StoryScreen2";
 import StoryScreen3 from "./src/screens/story-screens/StoryScreen3";
 import StoryScreen4 from "./src/screens/story-screens/StoryScreen4";
 import LevelScreen from "./src/screens/LevelScreen";
-import TestScreen from "./src/screens/TestScreen";
+import TestScreenPing from "./src/screens/TestScreenPing";
 import InterestingFact from "./src/screens/InterestingFact";
 
 const Stack = createStackNavigator();
@@ -20,7 +20,7 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName='TestScreen'
+      initialRouteName='HomeScreen'
       screenOptions={{
         headerTitleAlign: "center",
         headerStyle: {
@@ -82,9 +82,9 @@ function MyStack() {
         options={({ title: "LevelScreen" }, { headerLeft: null })}
       />
       <Stack.Screen
-        name='TestScreen'
-        component={TestScreen}
-        options={({ title: "TestScreen" }, { headerLeft: null })}
+        name='TestScreenPing'
+        component={TestScreenPing}
+        options={({ title: "TestScreenPing" }, { headerLeft: null })}
       />
       <Stack.Screen
         name='InterestingFact'

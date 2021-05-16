@@ -1,0 +1,26 @@
+{
+  "questions": {
+    "levels": {
+      "2": [
+        {
+          "answers": ["1.1","TOXINS", "WATER", "OIL", "NOTHING"],
+          "correct": "TOXINS"
+        },
+        {
+          "answers": ["1.2","TOXINS", "WATER", "OIL", "NOTHING"],
+          "correct": "OIL"
+        }
+      ],
+      "3": [
+        {
+          "answers": ["2.1","TOXINS", "WATER", "OIL", "NOTHING"],
+          "correct": "TOXINS"
+        },
+        {
+          "answers": ["2.2","TOXINS", "WATER", "OIL", "NOTHING"],
+          "correct": "OIL"
+        }
+      ]
+    }
+  }
+}
