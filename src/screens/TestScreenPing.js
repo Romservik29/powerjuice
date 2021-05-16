@@ -3,12 +3,13 @@ import StoryContainer from "../components/StoryContainer";
 import { Container } from "../components/util/Container";
 import Close from "../components/util/Close";
 import { NextButton } from "../components/util/NextButton";
-import { Animated, Text, View } from "react-native";
+import { Alert, Animated, Text, View } from "react-native";
 import { AnswerButton } from "../components/util/AnswerButton";
 import { AnswerText } from "../components/util/AnswerText";
 import questions from "../questions.json";
 import { LanguageContext, PointsContext } from "../../App";
 import { LinearProgress } from "react-native-elements/";
+import language from "../../language";
 
 export default function TestScreenPing({ navigation, route }) {
   const { lang } = useContext(LanguageContext);
@@ -57,7 +58,7 @@ export default function TestScreenPing({ navigation, route }) {
             alignItems: "center",
           }}>
           <Text style={{ color: "orange" }}>
-            Question {(level - 2) * 3 + question + 1}/9
+            {language.Question[lang]} {(level - 2) * 3 + question + 1}/9
           </Text>
           <Text style={{ color: "orange" }}>{points}</Text>
         </View>
@@ -126,6 +127,8 @@ export default function TestScreenPing({ navigation, route }) {
                 level,
                 progress: ((level - 2) * 3 + question + 1) / 9,
               });
+          } else {
+            Alert.alert("Choose your answer!");
           }
         }}
       />

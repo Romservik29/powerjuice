@@ -13,7 +13,7 @@ const StoryScreen2 = ({ navigation }) => {
   return (
     <Container color='dark'>
       <StoryContainer>
-        <Image source={require("../../img/mother-nature.png")} />
+        <Image source={require("../../img/robot.png")} />
         <StoryText style={{ margin: 20 }}>
         {language.Story2[lang]}
         </StoryText>

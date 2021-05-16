@@ -14,7 +14,7 @@ const StoryScreen4 = ({ navigation }) => {
     <View>
       <Container color='dark'>
         <StoryContainer>
-          <Image source={require("../../img/mother-nature.png")} />
+          <Image source={require("../../img/boy-knowl.png")} />
             <StoryText style={{margin: 20}}>
               {language.Story4[lang]}
             </StoryText>

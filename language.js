@@ -42,6 +42,14 @@ const language = {
     I_m_ready:{
         en: "I’m ready",
         fr: "Je suis prêt"
+    },
+    Question:{
+        en: "Question",
+        fr: "Question"
+    },
+    That_means:{
+        en:"THAT MEANS",
+        fr:"CELA SIGNIFIE QUE"
     }
 }
 export default language

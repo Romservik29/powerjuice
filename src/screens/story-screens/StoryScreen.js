@@ -21,7 +21,7 @@ const StoryScreen = ({ navigation }) => {
       />
       <StoryContainer>
         <Image
-          source={require("../../img/Rectangle.png")}
+          source={require("../../img/mother-nature-dies.png")}
           style={styles.img}></Image>
         <Text style={styles.text}>
           {lang === "fr" ? "Mère nature a besoin de votre aide": "Mother Earth needs your help"}

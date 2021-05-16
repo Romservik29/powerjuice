@@ -1,18 +1,26 @@
 import React, { useContext, useState } from "react";
-import { Text, StyleSheet, Image, View } from "react-native";
+import { Text, StyleSheet, Image, View, Alert } from "react-native";
 import { Input } from "react-native-elements";
 import { Container } from "../components/util/Container";
 import { LanguageContext, NameContext } from "../../App";
 import { MyButton } from "../components/util/MyButton";
 import StoryContainer from "../components/StoryContainer";
 import language from "../../language";
+import color from "color";
 
 const NameEntryScreen = ({ navigation }) => {
   const { username, setUsername } = useContext(NameContext);
-  const {lang} = useContext(LanguageContext)
+  const { lang } = useContext(LanguageContext);
+  const handleName = () => {
+    if (username) {
+      navigation.navigate("StoryScreen");
+    }else{
+      Alert.alert("Enter your name")
+    }
+  };
   return (
     <Container color='dark'>
-      <Image style={styles.img} source={require("../img/mother-nature.png")} />
+      <Image style={styles.img} source={require("../img/mother-name.png")} />
       <StoryContainer>
         <View
           style={{
@@ -22,24 +30,31 @@ const NameEntryScreen = ({ navigation }) => {
             justifyContent: "center",
           }}>
           <View style={{ alignItems: "flex-start" }}>
-            <Text style={styles.textStyle}>{lang ==="fr" ? "Quel est" : "What is"}</Text>
             <Text style={styles.textStyle}>
-              <Text style={{ ...styles.textStyle, color: "orange" }}>{lang=== "fr" ? "votre nom" : "your name"}</Text>
+              {lang === "fr" ? "Quel est" : "What is"}
+            </Text>
+            <Text style={styles.textStyle}>
+              <Text style={{ ...styles.textStyle, color: "orange" }}>
+                {lang === "fr" ? "votre nom" : "your name"}
+              </Text>
               ?
             </Text>
           </View>
-          <Input
-            maxLength={10}
-            placeholder={language.Name_Here[lang]}
-            onChangeText={setUsername}
-            value={username}
-          />
+          <View style={{ width: 200 }}>
+            <Input
+              inputContainerStyle={{ color: "red" }}
+              maxLength={12}
+              placeholder={language.Name_Here[lang]}
+              onChangeText={setUsername}
+              value={username}
+            />
+          </View>
+
           <MyButton
             width='200px'
             style={styles.btnGame}
-            disabled={!username}
             title={language.Begin_the_story[lang]}
-            onPress={() => navigation.navigate("StoryScreen")}
+            onPress={handleName}
           />
         </View>
       </StoryContainer>

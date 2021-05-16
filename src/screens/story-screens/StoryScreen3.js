@@ -13,7 +13,7 @@ const StoryScreen3 = ({ navigation }) => {
   return (
     <Container color="dark">
       <StoryContainer>
-        <Image source={require("../../img/mother-nature.png")} />
+        <Image source={require("../../img/upgate.png")} />
           <StoryText style={{ margin: 20 }}>
           Nous devons rafraîchir les cerveaux électroniques pour qu'ils aient la capacité de prendre les meilleures décisions.
           </StoryText>
