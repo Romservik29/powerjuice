@@ -23,7 +23,7 @@ const StoryScreen = ({ navigation }) => {
             style={styles.img}></Image>
           <Text style={styles.text}>
             Mother Earth needs your help
-            <Text style={{fontSize: 18, color: "#F2A323", fontWeight: 'bold'}}>{" " + username}</Text>. Poison is leaking
+            <Text style={{fontSize: 16, color: "#F2A323", fontWeight: 'bold'}}>{" " + username}</Text>. Poison is leaking
             into her watery groundwater veins from electronics and the weight of
             the landfills are putting pressure on her.
           </Text>

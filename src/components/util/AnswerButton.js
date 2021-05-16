@@ -2,7 +2,8 @@ import React from "react";
 import { View } from "react-native";
 import { Button } from "react-native-elements";
 
-export const AnswerButton = ({ color, title, onPress, disabled }) => {
+export const AnswerButton = ({children, color, title, onPress, disabled, bgColor }) => {
+
   return (
     <View style={{ width: 250, margin: 5 }}>
       <Button
@@ -17,11 +18,12 @@ export const AnswerButton = ({ color, title, onPress, disabled }) => {
           borderColor: "#383B8F",
           borderRadius: 10,
           borderWidth: 2,
+          backgroundColor: bgColor ?? "white",
           padding: 5,
         }}
         buttonStyle={{ justifyContent: "flex-start" }}
         type='clear'>
-        Answer
+{        {children}}
       </Button>
     </View>
   );

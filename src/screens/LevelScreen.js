@@ -3,7 +3,6 @@ import { Image, View, Pressable } from "react-native";
 import styled from "styled-components";
 import { Container } from "../components/util/Container";
 import { LinearProgress } from "react-native-elements";
-import StoryContainer from "../components/StoryContainer";
 
 export default function LevelScreen({ navigation, route }) {
   return (

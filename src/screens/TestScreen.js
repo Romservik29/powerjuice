@@ -9,18 +9,25 @@ import { AnswerText } from "../components/util/AnswerText";
 
 export default function TestScreen({ navigation }) {
   const [answered, setAnswered] = useState(false);
-  const handlePress = () => {
+  const arr = {
+    answers: ["TOXINS", "WATER", "OIL", "NOTHING"],
+    correct: "TOXINS",
+  };
+  const [array, setArray] = useState(arr);
+  const handlePress = (answer) => {
     setAnswered(true);
+    array.answer = answer;
+    setArray(array);
   };
   const springValue = new Animated.Value(0.85);
   useEffect(() => {
     Animated.spring(springValue, {
       toValue: 1,
       friction: 2,
-      useNativeDriver: true 
+      useNativeDriver: true,
     }).start();
   }, []);
-
+  console.log(array);
   return (
     <Container color='dark'>
       <Close navigation={navigation} />
@@ -43,26 +50,22 @@ export default function TestScreen({ navigation }) {
             </AnswerText>
           </Animated.View>
           <View>
-            <AnswerButton
-              disabled={answered}
-              onPress={handlePress}
-              title='Answer'
-            />
-            <AnswerButton
-              disabled={answered}
-              onPress={handlePress}
-              title='Answer'
-            />
-            <AnswerButton
-              disabled={answered}
-              onPress={handlePress}
-              title='Answer'
-            />
-            <AnswerButton
-              disabled={answered}
-              onPress={handlePress}
-              title='Answer'
-            />
+            {array.answers.map((a) => (
+              <AnswerButton
+                key={a}
+                disabled={answered}
+                onPress={() => handlePress(a)}
+                title={a}
+                bgColor={
+                  a !== array.answer
+                    ? "white"
+                    : array.answer === array.correct
+                    ? "green"
+                    : "red"
+                }
+              />
+            ))}
+            {console.log(array.answer === array.correct)}
           </View>
         </View>
       </StoryContainer>
@@ -71,7 +74,7 @@ export default function TestScreen({ navigation }) {
         color='#383B8F'
         width='150px'
         flexDirection='row'
-        onPress={() => navigation.navigate("TestScreen")}
+        onPress={() => navigation.navigate("InterestingFact")}
       />
     </Container>
   );

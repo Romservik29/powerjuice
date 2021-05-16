@@ -3,7 +3,6 @@ import React from "react";
 import { View, Image } from "react-native";
 import { Container } from "../components/util/Container";
 import CreatedBy from "../components/util/CreatedBy";
-import { Button } from 'react-native-elements';
 import { MyButton } from '../components/util/MyButton';
 
 const HomeScreen = ({ navigation }) => {
