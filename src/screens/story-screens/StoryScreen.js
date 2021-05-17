@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { Text, StyleSheet, Image, Button, View } from "react-native";
-import Icon from "react-native-vector-icons/AntDesign";
-import styled from "styled-components/native";
+import { Text, StyleSheet, Image } from "react-native";
 import { LanguageContext, NameContext } from "../../../App";
 import language from "../../../language";
 import StoryContainer from "../../components/StoryContainer";
+import Close from "../../components/util/Close";
 import { Container } from "../../components/util/Container";
 import { NextButton } from "../../components/util/NextButton";
 
@@ -13,12 +12,7 @@ const StoryScreen = ({ navigation }) => {
   const {lang} = useContext(LanguageContext);
   return (
     <Container color='#313494'>
-      <Icon
-        name='closecircleo'
-        onPress={() => navigation.navigate("HomeScreen")}
-        color='white'
-        style={styles.close}
-      />
+      <Close />
       <StoryContainer>
         <Image
           source={require("../../img/mother-nature-dies.png")}
@@ -38,7 +32,7 @@ const StoryScreen = ({ navigation }) => {
         color='#383B8F'
         width='150px'
         flexDirection='row'
-        onPress={() => navigation.navigate("StoryScreen2")}
+        onPress={() => navigation.push("StoryScreen2")}
       />
     </Container>
   );

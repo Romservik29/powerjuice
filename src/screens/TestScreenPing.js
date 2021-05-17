@@ -19,12 +19,14 @@ export default function TestScreenPing({ navigation, route }) {
   const [array, setArray] = useState(
     questions[lang].questions.levels[level][question]
   );
+  {
+    console.log(array);
+  }
   const handlePress = (answer) => {
     if (answered === false) {
       setAnswered(true);
       setArray({ ...array, answer });
-      questions[lang].questions.levels[level][question];
-      if (answer === array.correct)
+      if (array.correct.search(answer) >= 0)
         setPoints(
           points + questions[lang].questions.levels[level][question].points
         );
@@ -97,7 +99,7 @@ export default function TestScreenPing({ navigation, route }) {
                 bgColor={
                   a !== array.answer
                     ? "white"
-                    : array.answer === array.correct
+                    : array.correct.search(array.answer ?? "") >= 0
                     ? "#30B073"
                     : "#D81A48"
                 }
@@ -107,26 +109,45 @@ export default function TestScreenPing({ navigation, route }) {
         </View>
       </StoryContainer>
       <NextButton
-        title='PROCHAIN'
+        title={language.Next[lang]}
         color='#383B8F'
         width='150px'
         flexDirection='row'
         onPress={() => {
+          const isNext =
+            question < questions[lang].questions.levels[level].length - 1;
+          let newQuestion = route.params.question;
+          if (question < questions[lang].questions.levels[level].length - 1) {
+            newQuestion = route.params.question + 1;
+          } else {
+            newQuestion = 0;
+          }
           if (answered) {
-            if (question < questions[lang].questions.levels[level].length - 1)
-              navigation.push(
-                "TestScreenPing",
-                {
-                  question: route.params.question + 1,
+            if (array.fact === undefined) {
+              if (
+                question <
+                questions[lang].questions.levels[level].length - 1
+              ) {
+                navigation.push("TestScreenPing", {
+                  question: newQuestion,
                   level,
-                },
-                { transition: "vertical" }
-              );
-            else
-              navigation.push("LevelScreen", {
-                level,
+                });
+              } else
+                navigation.push("LevelScreen", {
+                  level,
+                  progress: ((level - 2) * 3 + question + 1) / 9,
+                  question: newQuestion,
+                  isNext,
+                });
+            } else {
+              navigation.push("InterestingFact", {
                 progress: ((level - 2) * 3 + question + 1) / 9,
+                question: newQuestion,
+                fact: array.fact,
+                isNext,
+                level,
               });
+            }
           } else {
             Alert.alert("Choose your answer!");
           }

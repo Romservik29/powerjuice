@@ -6,14 +6,13 @@ import { LanguageContext, NameContext } from "../../App";
 import { MyButton } from "../components/util/MyButton";
 import StoryContainer from "../components/StoryContainer";
 import language from "../../language";
-import color from "color";
 
 const NameEntryScreen = ({ navigation }) => {
   const { username, setUsername } = useContext(NameContext);
   const { lang } = useContext(LanguageContext);
   const handleName = () => {
     if (username) {
-      navigation.navigate("StoryScreen");
+      navigation.push("StoryScreen");
     }else{
       Alert.alert("Enter your name")
     }

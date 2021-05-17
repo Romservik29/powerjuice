@@ -19,6 +19,7 @@ import TestScreenPing from "./src/screens/TestScreenPing";
 import InterestingFact from "./src/screens/InterestingFact";
 import FinalScoreScreen from "./src/screens/FinalScoreScreen";
 import SelectLanguageScreen from "./src/screens/SelectLanguageScreen";
+import FinalMeanScreen from "./src/screens/FinalMeanScreen";
 
 const Stack = createStackNavigator();
 
@@ -33,7 +34,7 @@ function MyStack() {
       {/* <Stack.Screen name='Signup' component={Signup} />
       <Stack.Screen name='Login' component={Login} />
       <Stack.Screen name='Dashboard' component={Dashboard} /> */}
-      <Stack.Screen name='HomeScreen' component={HomeScreen} />
+      <Stack.Screen name='HomeScreen' component={HomeScreen} screenOptions={{title: "Hi", headerShown: true}}/>
       <Stack.Screen name='NameEntryScreen' component={NameEntryScreen} />
       <Stack.Screen name='StoryScreen' component={StoryScreen} />
       <Stack.Screen name='StoryScreen2' component={StoryScreen2} />
@@ -43,6 +44,7 @@ function MyStack() {
       <Stack.Screen name='TestScreenPing' component={TestScreenPing} />
       <Stack.Screen name='InterestingFact' component={InterestingFact} />
       <Stack.Screen name='FinalScoreScreen' component={FinalScoreScreen} />
+      <Stack.Screen name='FinalMeanScreen' component={FinalMeanScreen} />
     </Stack.Navigator>
   );
 }

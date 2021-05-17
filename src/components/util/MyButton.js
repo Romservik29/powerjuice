@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight } from 'react-native';
 import styled from 'styled-components/native';
 
 
@@ -24,6 +24,7 @@ export const MyButton = (props) => {
             onPress={props.onPress}
             color={props.color ?? 'orange'}
             width={props.width ?? '100%'}
+            height={props.height ?? "minContent"}
             disabled ={props.disabled ?? false}
         >
             <Label>

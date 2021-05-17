@@ -22,12 +22,12 @@ const StoryScreen2 = ({ navigation }) => {
             title={language.Back[lang].toUpperCase()}
             color='#383B8F'
             width='100px'
-            onPress={() => navigation.navigate("StoryScreen")}
+            onPress={() => navigation.push("StoryScreen")}
           />
           <MyButton
             title={language.Next[lang].toUpperCase()}
             width='100px'
-            onPress={() => navigation.navigate("StoryScreen3")}
+            onPress={() => navigation.push("StoryScreen3")}
           />
         </View>
       </StoryContainer>

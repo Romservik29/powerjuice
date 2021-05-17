@@ -15,7 +15,7 @@ const StoryScreen3 = ({ navigation }) => {
       <StoryContainer>
         <Image source={require("../../img/upgate.png")} />
           <StoryText style={{ margin: 20 }}>
-          Nous devons rafraîchir les cerveaux électroniques pour qu'ils aient la capacité de prendre les meilleures décisions.
+            {language.Story3[lang]}
           </StoryText>
           <View
             style={{
@@ -28,13 +28,13 @@ const StoryScreen3 = ({ navigation }) => {
               color='#383B8F'
               width='100px'
               flexDirection='row'
-              onPress={() => navigation.navigate("StoryScreen2")}
+              onPress={() => navigation.push("StoryScreen2")}
             />
             <MyButton
               title={language.Next[lang].toUpperCase()}
               width='100px'
               flexDirection='row'
-              onPress={() => navigation.navigate("StoryScreen4")}
+              onPress={() => navigation.push("StoryScreen4")}
             />
           </View>
       </StoryContainer>

@@ -15,11 +15,11 @@ export default function LevelScreen({ navigation, route }) {
         onPress={() => {
           if (questions[lang].questions.levels[route.params.level + 1])
             navigation.push("TestScreenPing", {
-              question: 0,
+              question: route.params.isNext ? 0 : route.params.question,
               level: route.params.level + 1,
             });
           else {
-            navigation.navigate("FinalScoreScreen");
+            navigation.push("FinalScoreScreen");
           }
         }}>
         <View style={{ display: "flex", alignItems: "center" }}>

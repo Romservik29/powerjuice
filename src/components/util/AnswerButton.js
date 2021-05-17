@@ -21,7 +21,7 @@ export const AnswerButton = ({children, color, title, onPress, disabled, bgColor
           backgroundColor: bgColor ?? "white",
           padding: 5,
         }}
-        buttonStyle={{ justifyContent: "flex-start" }}
+        buttonStyle={{ justifyContent: "flex-start"}}
         type='clear'>
 {        {children}}
       </Button>

@@ -24,7 +24,7 @@ const StoryScreen4 = ({ navigation }) => {
               width='250px'
               height='50px'
               onPress={() =>
-                navigation.navigate("LevelScreen", { level: 1, question: 0, progress: 0.3 })
+                navigation.push("LevelScreen", { level: 1, progress: 0.15, isNext: true })
               }
             />
         </StoryContainer>
